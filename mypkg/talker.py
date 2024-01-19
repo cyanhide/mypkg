@@ -9,7 +9,7 @@ class Talker():
     def __init__(self, nh):
         self.pub = nh.create_publisher(Int16,"countup", 10)
         self.n = 0
-        nh.create_timer(0.5, cb)
+        nh.create_timer(0.5, self.cb)
 
     def cb(self):
         msg = Int16()
