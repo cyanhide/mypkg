@@ -10,7 +10,7 @@
 git clone https://github.com/cyanhide/mypkg.git
 ```
 
-## 使用方法。
+## 使用方法
 ### 端末1つでおこなう方法
 準備が済んだら以下のコマンドを実行する。
 ```
