@@ -6,11 +6,11 @@ runs-on: ubuntu-22.04
 container: ryuichiueda/ubuntu22.04-ros2:latest
 steps:
 - name: Checkout code
-uses: actions/checkout@v2
+  uses: actions/checkout@v2
 - name: Set Node.js version
-uses: actions/setup-node@v3
-with:
-node-version: '16'
+  uses: actions/setup-node@v3
+    with:
+      node-version: '16'
 - name: Build and test
 run: |
                              rsync -av ./ /root/ros2_ws/src/mypkg/
