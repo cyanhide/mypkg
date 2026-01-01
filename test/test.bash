@@ -2,11 +2,10 @@
 # SPDX-FileCopyrightText: Hidenori Koseki
 # SPDX-License-Identifier: BSD-3-Clause
 
-dir=~
+dir="$HOME"
 [ "$1" != "" ] && dir="$1"
 
-cd $dir/ros2_ws || exit 1
-
+cd "$dir/ros2_ws" || exit 1
 
 colcon build
 source install/setup.bash
