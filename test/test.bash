@@ -7,37 +7,24 @@ dir=~
 
 cd $dir/ros2_ws || exit 1
 
-
 colcon build
 source install/setup.bash
 
-
+# system_monitor.launch.py をフォアグラウンドで起動してログに書き込む
 ros2 launch mypkg system_monitor.launch.py > /tmp/mypkg.log 2>&1 &
 PID=$!
 
-
-timeout=20
-count=0
-found=0
-
-while [ $count -lt $timeout ]; do
+# ログが書き込まれるまで最大20秒待機
+for i in $(seq 1 20); do
     if grep -q 'CPU:' /tmp/mypkg.log; then
-        found=1
-        break
+        echo "Test passed: CPU/Memory output found."
+        kill $PID
+        exit 0
     fi
     sleep 1
-    count=$((count + 1))
 done
 
-
 kill $PID 2>/dev/null
-
-
-if [ $found -eq 1 ]; then
-    echo "Test passed: CPU/Memory output found."
-    exit 0
-else
-    echo "Test failed: CPU/Memory output not found."
-    exit 1
-fi
+echo "Test failed: CPU/Memory output not found."
+exit 1
 
