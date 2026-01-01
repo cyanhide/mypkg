@@ -4,26 +4,25 @@
 
 set -e
 
-# ワークスペース
-WS_DIR="$HOME/ros2_ws"
+# このスクリプトの場所を基準にする
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
+# src/mypkg/test/test.bash → src/mypkg → src → ros2_ws
+WS_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+echo "Using workspace: $WS_DIR"
 cd "$WS_DIR"
 
 # ビルド
 colcon build
 source install/setup.bash
 
-# ログ初期化
-LOG=/tmp/mypkg.log
-rm -f "$LOG"
-
 # launch 実行（バックグラウンド）
-timeout 20 ros2 launch mypkg system_monitor.launch.py > "$LOG" 2>&1 &
+timeout 20 ros2 launch mypkg system_monitor.launch.py &
 LAUNCH_PID=$!
 
 # ノード起動待ち（最大10秒）
 for i in {1..10}; do
-    # ノード一覧を取得
     if ros2 node list | grep -q system_; then
         echo "Test passed: ROS2 nodes are running."
         kill $LAUNCH_PID 2>/dev/null || true
@@ -33,6 +32,5 @@ for i in {1..10}; do
 done
 
 echo "Test failed: ROS2 nodes did not start."
-echo "==== /tmp/mypkg.log ===="
-cat "$LOG"
+ros2 node list || true
 exit 1
