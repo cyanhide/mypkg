@@ -13,7 +13,7 @@ cd "$dir/ros2_ws" || exit 1
 colcon build
 source install/setup.bash
 
-# launch をバックグラウンドで起動し、ログを保存
+# system_monitor.launch.py を20秒間起動してログに保存
 timeout 20 ros2 launch mypkg system_monitor.launch.py > /tmp/mypkg.log 2>&1 &
 
 # CPU 出力が現れるまで最大10秒待つ
