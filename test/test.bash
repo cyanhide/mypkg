@@ -12,7 +12,7 @@ source install/setup.bash
 
 timeout 20 ros2 launch mypkg system_monitor.launch.py > /tmp/mypkg.log 2>&1 &
 
-sleep 2
+sleep 5
 
 grep 'CPU:' /tmp/mypkg.log >/dev/null
 if [ $? -eq 0 ]; then
