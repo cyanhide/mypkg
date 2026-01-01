@@ -36,15 +36,15 @@ ros2 run mypkg listener
 ## 必要なソフトウェア
 * Python 3.8.10
 * ROS2 foxy
-
+* Ubuntu 24.04 LTS
 ## テスト環境
-* Ubuntu 20.04.4 LTS
-* Ubuntu 22.04
+* Ubuntu 24.04 LTS
 
 ## 権利関係
 * このソフトウェアパッケージは、3条項BSDライセンスの下、再配布および使用が許可されます。
-* このパッケージのコードは, 下記のスライド（CC-BY-SA 4.0 by Ryuichi Ueda）の一部のものを加筆し, 本人の許可を得て自身の著作としたものです.
-    * [ryuichiueda/my_slides/robosys_2022](https://github.com/ryuichiueda/my_slides/tree/master/robosys_2022)
-        * ©　2022 Ryuichi Ueda
 
-© 2023 Hibiki Iida
+© 2025 Hidenori Koseki
+
+## 参考文献
+- このパッケージのディレクトリ構成やテスト方式、コードは，下記のスライド（CC-BY-SA 4.0 by Ryuichi Ueda）のものを，本人の許可を得て参考にしています。
+    - [ryuichiueda/slides_marp/robosys2025](https://github.com/ryuichiueda/slides_marp/tree/master/robosys2025) （© 2025 Ryuichi Ueda）
