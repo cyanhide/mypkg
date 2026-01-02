@@ -2,36 +2,52 @@
 ![test](https://github.com/cyanhide/mypkg/actions/workflows/test.yml/badge.svg)
 
 ## 概要
-このパッケージは、talkerが0.5秒刻みで0から順にカウントした整数をlistenerが受け取り表示させるものである。
+このパッケージは、CPUとメモリの使用率を定期的に取得して ROS 2 トピックで配信し、別ノードで受信・表示することができます。
 
 ## 準備
 以下のコマンドをターミナル上で実行する。
 ```
 git clone https://github.com/cyanhide/mypkg.git
 ```
+ROS 2 のワークスペースに配置後，ビルドを行う。
+```
+cd ~/ros2_ws
+colcon build
+source install/setup.bash
+```
 
 ## 使用方法
 ### 端末1つでおこなう方法
-準備が済んだら以下のコマンドを実行する。
+準備が済んだら以下のコマンドを実行することで，
+CPU・メモリ監視ノードを同時に起動できる。
 ```
-ros2 launch mypkg talk_lasten.launch.py
+ros2 launch mypkg system_monitor.launch.py
+
 ```
-そうすると実行結果が表示される。
+実行すると，以下のように CPU とメモリの使用率が定期的に表示される。
+```
+CPU: 0.2%, MEM: 6.5%
+
+```
 
 ### 端末を2つでおこなう方法
-#### talker
-まず以下のコマンドを実行する。
+#### system_publisher
+まず以下のコマンドを実行すると
+CPU・メモリ使用率を取得してトピックに送信するノードが起動する。
 ```
-ros2 run mypkg talker
+ros2 run mypkg system_publisher
+
 ```
 ※注意　実行後なにも表示されないので、そのままにしておく。
 
-#### listener
-talkerを実行後、別端末を用意し、以下のコマンドを実行する。
+#### system_listener
+system_publisherを実行後、別端末を用意し、以下のコマンドを実行すると
+送信された CPU・メモリ使用率を受信して表示するノードが起動する。
 ```
-ros2 run mypkg listener
+ros2 run mypkg system_listener
+
 ```
-そして実行結果が表示される。
+
 
 ## 必要なソフトウェア
 * Python 3.8.10
@@ -39,6 +55,7 @@ ros2 run mypkg listener
 * Ubuntu 24.04 LTS
 ## テスト環境
 * Ubuntu 24.04 LTS
+* GitHUb Actions
 
 ## 権利関係
 * このソフトウェアパッケージは、3条項BSDライセンスの下、再配布および使用が許可されます。
