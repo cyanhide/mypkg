@@ -22,12 +22,10 @@ source install/setup.bash
 CPU・メモリ監視ノードを同時に起動できる。
 ```
 ros2 launch mypkg system_monitor.launch.py
-
 ```
 実行すると，以下のように CPU とメモリの使用率が定期的に表示される。
 ```
 CPU: 0.2%, MEM: 6.5%
-
 ```
 
 ### 端末を2つでおこなう方法
@@ -36,7 +34,6 @@ CPU: 0.2%, MEM: 6.5%
 CPU・メモリ使用率を取得してトピックに送信するノードが起動する。
 ```
 ros2 run mypkg system_publisher
-
 ```
 ※注意　実行後なにも表示されないので、そのままにしておく。
 
@@ -45,7 +42,6 @@ system_publisherを実行後、別端末を用意し、以下のコマンドを�
 送信された CPU・メモリ使用率を受信して表示するノードが起動する。
 ```
 ros2 run mypkg system_listener
-
 ```
 
 
