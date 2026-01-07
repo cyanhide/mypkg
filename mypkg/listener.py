@@ -13,7 +13,7 @@ def cb(msg):
 
 
     if n != 0 and (n % 3 == 0 or '3' in str(n)):
-        node.get_logger().info(f" Listen:!!!! {n}!!!!")
+        node.get_logger().info(f" Listen:!!!!{n}!!!!")
     else:
         node.get_logger().info(f"Listen: {n}")
 
