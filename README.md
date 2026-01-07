@@ -7,7 +7,7 @@
 ## 準備
 以下のコマンドをターミナル上で実行する。
 ```
-git clone https://github.com/hibiki703/mypkg.git
+git clone https://github.com/cyanhide/mypkg.git
 ```
 
 ## 使用方法
