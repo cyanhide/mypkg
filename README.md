@@ -1,8 +1,11 @@
 # mypkg
 ![test](https://github.com/cyanhide/mypkg/actions/workflows/test.yml/badge.svg)
 
-## 概要
-このパッケージは、talkerが0.5秒刻みで0から順にカウントした整数をlistenerが受け取り表示させるものである。
+##概要
+本パッケージは、talkerノードが0.5秒刻みで0から順に整数をカウントし、
+listenerノードがそれを受信して表示するものである。
+カウント値が3の倍数、または数字に3を含む場合には、
+いわゆる「世界のナベアツ方式」に基づき出力を変化させている。
 
 ## 準備
 以下のコマンドをターミナル上で実行する。
@@ -26,22 +29,19 @@ ros2 run mypkg listener
 ```
 そうすると実行結果が表示される。
 
-
 ### 端末1つでおこなう方法
 準備が済んだら以下のコマンドを実行する。
 ```
-ros2 launch mypkg talk_lasten.launch.py
+ros2 launch mypkg talk_listen.launch.py
 ```
 そうすると実行結果が表示される。
-
-
+　
 ## 必要なソフトウェア
 * Python 3.8.10
 * ROS2 foxy
 
 ## テスト環境
 * Ubuntu 20.04.4 LTS
-* Ubuntu 22.04
 * GitHub Actions
 ## 権利関係
 * このソフトウェアパッケージは、3条項BSDライセンスの下、再配布および使用が許可されます。
