@@ -1,11 +1,11 @@
 # mypkg
 ![test](https://github.com/cyanhide/mypkg/actions/workflows/test.yml/badge.svg)
 
-##概要
+## 概要
 本パッケージは、talkerノードが0.5秒刻みで0から順に整数をカウントし、
 listenerノードがそれを受信して表示するものである。
 カウント値が3の倍数、または数字に3を含む場合には、
-いわゆる「世界のナベアツ方式」に基づき出力を変化させている。
+いわゆる「世界のナベアツ方式」に基づき出力を変化させる。
 
 ## 準備
 以下のコマンドをターミナル上で実行する。
@@ -19,10 +19,10 @@ git clone https://github.com/cyanhide/mypkg.git
 * トピック: /count [std_msgs/msg/Int32]
 * 出力: count（整数値）
 
-###listener
-talkerノードが配信するトピックを受信し、内容を表示します。
+### listener
+talkerノードが配信するトピックを受信し、内容を表示する。
 受信したカウント値が3の倍数、または数字に3を含む場合には、
-「世界のナベアツ方式」に基づき表示内容を変化させます。
+「世界のナベアツ方式」に基づき表示内容を変化させる。
 
 * トピック: /count [std_msgs/msg/Int32]
 * 入力: count（整数値）
