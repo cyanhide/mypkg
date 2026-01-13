@@ -3,8 +3,6 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 
- set -euo pipefail
-
  dir=~
  [ "$1" != "" ] && dir="$1"
 
