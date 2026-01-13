@@ -13,4 +13,4 @@
 
 
  cat /tmp/mypkg.log |
- grep 'Listen: 10'
+ grep ' !!!! 6 !!!!'
