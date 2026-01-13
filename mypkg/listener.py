@@ -4,21 +4,28 @@
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Int16
+from std_msgs.msg import String
 
 
-def cb(msg):
-    global node
-    n = msg.data
+class Listener(Node):
+    def __init__(self):
+        super().__init__('listener')
+        self.create_subscription(
+            String,
+            'nabeatsu',
+            self.cb,
+            10
+        )
+
+    def cb(self, msg):
+        # 受信した文字列をそのまま表示
+        self.get_logger().info(msg.data)
 
 
-    if n != 0 and (n % 3 == 0 or '3' in str(n)):
-        node.get_logger().info(f" Listen:!!!!{n}!!!!")
-    else:
-        node.get_logger().info(f"Listen: {n}")
+def main():
+    rclpy.init()
+    node = Listener()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
 
-
-rclpy.init()
-node = Node("listener")
-sub = node.create_subscription(Int16, "countup", cb, 10)
-rclpy.spin(node)
